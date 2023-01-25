@@ -20,22 +20,46 @@
     </header>
     <main>
         <!-- Text input box-->
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="./assets/style.css">
+  <title>Investment Watchlist</title>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <div class="nav-wrapper">
+        <!-- <a href="#" class="brand-logo">Logo</a> -->
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="LINK WATCHLIST HTML">My Watchlist</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <main class="first-page-main">
+    <!-- Text input box-->
+    <div class="row first-page-outter-div">
+      <form class="col s12">
         <div class="row">
-            <form class="col s12">
-              <div class="row">
-                <div class="input-field col s6">
-                  <input id="input_text" type="text" data-length="10">
-                  <label for="input_text">Input text</label>
-                </div>
+          <div class="input-field col s12">
+            <input id="input_text" type="text" data-length="10">
+            <label for="input_text">Enter Stock or Crypto Company</label>
+          </div>
         </div>
         <label>Choose Stock or Crypto</label>
-    <select class="browser-default picklist">
-    <option value="" disabled selected>Choose your option</option>
-    <option value="1">Stock</option>
-    <option value="2">Crypto</option>
-    </select>
-    </main>
-    <footer>
-        <h3>Created by Amir, Wenbing, and Aaron</h3>
-    </footer>
+        <select class="browser-default first-page-picklist">
+          <option value="" disabled selected>Choose your option</option>
+          <option value="1">Stock</option>
+          <option value="2">Crypto</option>
+        </select>
+        <button class="btn waves-effect waves-light homebutton" id="homebutton" type="submit" name="action">Search</button>
+    </div>
+  </main>
+  <footer>
+    <h3>Created by Amir, Wenbing, and Aaron</h3>
+  </footer>
 </body>
