@@ -6,11 +6,9 @@
 .first-page-main {
     display: flex;
     align-items: center;
-    border:5px solid black;
 }
 
 .first-page-outter-div {
-    border:5px solid black;
     width: 50%;
 
 }
@@ -34,4 +32,9 @@ body {
 .data-block{
     border: 5px solid black;
     height: 700px;
+}
+
+.homebutton {
+    margin-top: 10px;
+    float: right;
 }
