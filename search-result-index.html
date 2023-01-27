@@ -25,7 +25,7 @@
     <!-- Page Layout here -->
         <div class="row">
 
-            <div class="col s12 m4 l3">
+            <div class="col s12 m5 l4" id = "Page2LeftDiv">
                 <div class="row">
                     <div class="input-field col s6">
                         <input placeholder="Enter Stock or Crypto Company" id="input_text" type="text" data-length="10">
@@ -33,15 +33,16 @@
                     </div>  
                 </div>
                 <label>Choose Stock or Crypto</label>
-                <select class="browser-default picklist">
+                <select class="browser-default page2picklist">
                     <option value="" disabled selected>Choose your option</option>
                     <option value="1">Stock</option>
                     <option value="2">Crypto</option>
                 </select>
+                <button class="btn waves-effect waves-light homebutton" id="homebutton2ndPage" type="submit" name="action">Search</button>
                 <button class="btn waves-effect waves-light" id="addWatchList">Add to Watchlist</button>
             </div>
             
-            <div class="col s12 m8 l9 data-block"> 
+            <div class="col s12 m7 l8 data-block"> 
               
             </div>
       </div>
@@ -51,4 +52,5 @@
     </footer>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <script src="./results.js"></script>
+    <script src="/watchlist.js"></script>
 </body>
