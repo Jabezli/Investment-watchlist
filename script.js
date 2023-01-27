@@ -1,7 +1,7 @@
-var button = document.querySelector('#homebutton');
-
+var form = document.querySelector('#form-submit');
 function handleSearchFormSubmit(event) {
-  event.preventDefault();
+   event.preventDefault();
+  
 
   var textInput = document.querySelector('#input_text').value;
   var picklistValue = document.querySelector('.first-page-picklist').value;
@@ -11,9 +11,10 @@ function handleSearchFormSubmit(event) {
     return;
   }
 
-  var queryString = './search-results.html' + textInput + ',' + picklistValue;
+  var queryString = './search-result-index.html?=' + textInput + ',' + picklistValue;
+  console.log(queryString)
 
   location.assign(queryString);
 }
 
-button.addEventListener('submit', handleSearchFormSubmit);
+form.addEventListener('submit', handleSearchFormSubmit);
