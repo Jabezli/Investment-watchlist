@@ -1,4 +1,5 @@
 var form = document.querySelector('#form-submit');
+
 function handleSearchFormSubmit(event) {
    event.preventDefault();
   
