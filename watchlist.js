@@ -3,6 +3,11 @@
 //a remove button needs to be added
 
 //an object to store stock info
+
+const stockList = document.querySelector('.Page3StockList');
+const tableRowName = document.querySelector('.page3Name');
+const tableRowPrice = document.querySelector('.page3Price');
+
 var fakeData = [
     {
         name: "apple",
@@ -44,7 +49,25 @@ function getLocalInfo (){
     return StockCryptoArray;
 }
 
-function createEl(){};
+
+function createEl(){
+    // the while loop below is to remove any exisiting html stocklist child before obtaining and printing new children to avoid duplication
+    while(stockList.firstChild) {
+        stockList.removeChild(stockList.firstChild);
+    };
+    //now, retrieve the array from local storage
+    let getStockCryptoArray = getLocalInfo();
+
+    for (var i = 0; i < getStockCryptoArray.length; i++) {
+        let tableRow = document.createElement('tr');
+        let name = getStockCryptoArray[i].name;
+        let price = getStockCryptoArray[i].price;
+        tableRowName.textContent = name;
+        tableRowPrice.textContent = price;
+        stockList.appendChild(tableRow);
+    }
+};
+
 
 //I need to have the save function in second page with the saveBtn eventlistener. also the getLocalInfo function, in case there are exisitng info in localstorage
 //getlocalInfo again in page 3 to get the array. createEL in page 3. use template literal to do this.

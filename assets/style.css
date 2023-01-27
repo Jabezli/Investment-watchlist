@@ -30,11 +30,23 @@ body {
   }
 
 .data-block{
-    border: 5px solid black;
-    height: 700px;
+
 }
 
 .homebutton {
     margin-top: 10px;
     float: right;
+}
+
+.homebutton2ndPage{
+  margin-top: 10px;
+
+}
+
+#Page2LeftDiv{
+  display:flex;
+  flex-direction: column;
+}
+#addWatchList{
+  margin-top: 10px;
 }

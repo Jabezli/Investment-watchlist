@@ -75,3 +75,33 @@ function getParams() {
     resultContentEL.append(resultCard);
   }
 
+
+
+//wen's code below
+function saveInfo (){
+    //add new stock into watch list
+    let addedStockCrypto = {};
+    addedStockCrypto.name = "Apple"; //this should be linked to the name in the returned data from API
+    addedStockCrypto.price = 100; //this should be linked to the price in the returned data from API
+    //retrieve exisiting localstorage info
+    let getStockCryptoArray = getLocalInfo();
+    console.log("addedStockCrypto", addedStockCrypto);
+    //now getStockCryptoArray should have exisiting saved stock from local stroage. so I will push the addedStorckCrypto - new info into the array.
+    getStockCryptoArray.push(addedStockCrypto);
+    //ok, getStockCryptoArray is up-to-date. Time to store it to the local stroage.
+    //the actual data I am setting is the "getStockCryptoArray" which is up-to-date. However, I am naming it "addedStockCrypto" which
+    //doesn't relate to the first line of the function. Becasue in the "getLocalInfo" I am getting the info from "addedStockCrypto", I need to have the 
+    //same name here.
+    localStorage.setItem("addedStockCrypto", JSON.stringify(getStockCryptoArray));
+}
+
+function getLocalInfo (){
+    let StockCryptoArray = JSON.parse(localStorage.getItem('addedStockCrypto')) || [];
+    return StockCryptoArray;
+}
+  const watchListBtn = document.querySelector('#addWatchList')
+
+  watchListBtn.addEventListener('click',function(){
+    console.log("clicked");
+    saveInfo();
+  })
