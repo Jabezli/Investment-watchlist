@@ -35,7 +35,6 @@ function getParams() {
         }
     });
     }
-
     else if (type === '2') {
       queryUrl = 'https://api.coingecko.com/api/v3/coins/' + company;
     $.ajax ({
