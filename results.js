@@ -1,4 +1,5 @@
 var resultContentEL = document.querySelector('.data-block');
+var form = document.querySelector('#form-submit');
 
 function getParams() {
     // Get the search params out of the URL
@@ -30,7 +31,6 @@ function getParams() {
         },
         success: function(data) {
             console.log(data);
-            console.log(data['Global Quote']['01. symbol']);
             printStock(data);
         }
     });
@@ -48,7 +48,7 @@ function getParams() {
         },
         success: function(data) {
             console.log(data);
-            // printCrypto(data);
+            printCrypto(data);
         }
     });
     }
@@ -63,13 +63,13 @@ function getParams() {
     var date = document.createElement('p')
     date.textContent = 'Trading Day: ' + data['Global Quote']['07. latest trading day']
     var price = document.createElement('p')
-    price.textContent = 'Price: ' + data['Global Quote']['05. price']
+    price.textContent = 'Price: $' + data['Global Quote']['05. price']
     var volume = document.createElement('p')
     volume.textContent = 'Volume: ' + data['Global Quote']['06. volume']
     var change = document.createElement('p')
-    change.textContent = 'Price change ' + data['Global Quote']['09. change']
+    change.textContent = 'Price change: $' + data['Global Quote']['09. change']
     var changePercent = document.createElement('p')
-    changePercent.textContent = 'Change % ' + data['Global Quote']['10. change percent']
+    changePercent.textContent = 'Change %: ' + data['Global Quote']['10. change percent']
     resultCard.append(titleEL, date, price, volume, change, changePercent);
     resultContentEL.append(resultCard);
   }
@@ -77,28 +77,47 @@ function getParams() {
   function printCrypto(data) {
     var resultCard = document.createElement('div');
     var titleEL = document.createElement('h3');
-    titleEL.textContent = data['Global Quote']['01. symbol'];
-    var date = document.createElement('p')
-    date.textContent = 'Trading Day: ' + data['Global Quote']['07. latest trading day']
+    titleEL.textContent = data.name;
+    var symbol = document.createElement('p');
+    symbol.textContent = 'Symbol: ' + data.symbol;
+    var image = document.createElement('img');
+    image.src = data.image.small;
     var price = document.createElement('p')
-    price.textContent = 'Price: ' + data['Global Quote']['05. price']
-    var volume = document.createElement('p')
-    volume.textContent = 'Volume: ' + data['Global Quote']['06. volume']
+    price.textContent = 'Price: $' + data.market_data.current_price.usd;
+    var dayHigh = document.createElement('p')
+    dayHigh.textContent = '24h High: $' + data.market_data.high_24h.usd;
+    var dayLow = document.createElement('p')
+    dayLow.textContent = '24h Low: $' + data.market_data.low_24h.usd;
     var change = document.createElement('p')
-    change.textContent = 'Price change ' + data['Global Quote']['09. change']
-    var changePercent = document.createElement('p')
-    changePercent.textContent = 'Change % ' + data['Global Quote']['10. change percent']
-    resultCard.append(titleEL, date, price, volume, change, changePercent);
+    change.textContent = '24h Price change: $' + Math.round(data.market_data.price_change_24h);
+    resultCard.append(titleEL, symbol, image, price, dayHigh, dayLow, change);
     resultContentEL.append(resultCard);
   }
+
+  //Code to run new search
+  function handleSearchFormSubmit(event) {
+    event.preventDefault();
+   
+   var textInput = document.querySelector('#input_text').value;
+   var picklistValue = document.querySelector('.page2picklist').value;
+ 
+   if (!textInput) {
+     console.error('You need a search input value!');
+     return;
+   }
+   searchApi(textInput, picklistValue);
+ }
+ 
+ form.addEventListener('submit', handleSearchFormSubmit);
+  
 
 
 //wen's code below
 function saveInfo (){
     //add new stock into watch list
     let addedStockCrypto = {};
-    addedStockCrypto.name = "Apple"; //this should be linked to the name in the returned data from API
-    addedStockCrypto.price = 100; //this should be linked to the price in the returned data from API
+    addedStockCrypto.name = "Apple"; //this should be linked to the name in the returned data from API - Amir comment: I believe this should be titleEL, which is the variable that stores the name
+    addedStockCrypto.price = 100; //this should be linked to the price in the returned data from API - Amir comment: I believe this should be price, which is the variable that stores the price
     //retrieve exisiting localstorage info
     let getStockCryptoArray = getLocalInfo();
     console.log("addedStockCrypto", addedStockCrypto);
