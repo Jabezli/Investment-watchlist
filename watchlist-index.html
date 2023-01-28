@@ -1,41 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="./assets/style.css">
-    <title>Investment Watchlist</title>
-  </head>
 
-    <body>
-        <header>
-            <nav>
-                <div class="nav-wrapper">
-                  <!-- <a href="#" class="brand-logo">Logo</a> -->
-                  <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="./index.html">Home</a></li>
-                  </ul>
-                </div>
-            </nav>
-        </header> 
-        <h1> Watchlist</h1>
-        <table class="highlight watchlist-table">
-            <thead>
-              <tr>
-                  <th>Name</th>
-              </tr>
-            </thead>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="./assets/style.css">
+  <title>Investment Watchlist</title>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <div class="nav-wrapper">
+        <!-- <a href="#" class="brand-logo">Logo</a> -->
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="./index.html">Home</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <h1> Watchlist</h1>
+  <table class="responsive-table watchlist-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+      </tr>
+    </thead>
     <!-- Info that needs to input from JS -->
-            <tbody>
-              <tr>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-              </tr>
-            </tbody>
-          </table>
-  </body>
+    <tbody class="Page3StockList">
+      <tr>
+        <td class='page3Name'></td>
+        <td class='page3Price'></td>
+
+      </tr>
+    </tbody>
+  </table>
+  <script src="/watchlist.js"></script>
+</body>
