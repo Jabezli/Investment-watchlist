@@ -111,13 +111,13 @@ function getParams() {
  form.addEventListener('submit', handleSearchFormSubmit);
   
 
-
 //wen's code below
 function saveInfo (){
+    
     //add new stock into watch list
     let addedStockCrypto = {};
-    addedStockCrypto.name = "Apple"; //this should be linked to the name in the returned data from API - Amir comment: I believe this should be titleEL, which is the variable that stores the name
-    addedStockCrypto.price = 100; //this should be linked to the price in the returned data from API - Amir comment: I believe this should be price, which is the variable that stores the price
+    addedStockCrypto.name = titleEL.textContent; //this should be linked to the name in the returned data from API - Amir comment: I believe this should be titleEL, which is the variable that stores the name
+    addedStockCrypto.price = price.textContent; //this should be linked to the price in the returned data from API - Amir comment: I believe this should be price, which is the variable that stores the price
     //retrieve exisiting localstorage info
     let getStockCryptoArray = getLocalInfo();
     console.log("addedStockCrypto", addedStockCrypto);
@@ -137,6 +137,16 @@ function getLocalInfo (){
   const watchListBtn = document.querySelector('#addWatchList')
 
   watchListBtn.addEventListener('click',function(){
-    console.log("clicked");
-    saveInfo();
+    // saveInfo();
+    // console.log(titleEL.textContent);
+    location.assign('./watchlist-index.html')
   })
+
+
+  // function storeSearchResultInfoOb (){
+  //   searchApi();
+  //   let storeSearchResultInfoOb = {};    
+  //   storeSearchResultInfoOb.name = titleEL.textContent;
+  //   storeSearchResultInfoOb.price = price.textContent;
+  //   return storeSearchResultInfoOb;
+  // }
