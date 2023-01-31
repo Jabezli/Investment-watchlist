@@ -30,6 +30,10 @@ body {
     font-size: medium;
   }
 
+  .title {
+    font-size: 100px;
+  }
+  
 .card-container{
   /* background-color: beige; */
   padding-top: 50px;
