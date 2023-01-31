@@ -1,48 +1,4 @@
-//once save button on the 2nd page is clicked, certain (maybe 3 types of info ) will be shown on the page. the event listener should be on the 2nd page 
-//and use location.assign to go to the 3rd page.
-//a remove button needs to be added
-
-//an object to store stock info
-
 const stockList = document.querySelector('.Page3StockList');
-//const tableRowName = document.querySelector('.page3Name');
-//const tableRowPrice = document.querySelector('.page3Price');
-
-var fakeData = [
-    {
-        name: "apple",
-        price: 100,
-    },
-    {
-        name: "google",
-        price: 150,
-    },
-    {
-        name: "meta",
-        price: 120,
-    },
-    {
-        name: "Tesla",
-        price: 130,
-    },
-]
-// saveInfo();
-// function saveInfo (){
-//     //add new stock into watch list
-//     let addedStockCrypto = {};
-//     addedStockCrypto.name = "Apple"; //this should be linked to the name in the returned data from API
-//     addedStockCrypto.price = 100; //this should be linked to the price in the returned data from API
-//     //retrieve exisiting localstorage info
-//     let getStockCryptoArray = getLocalInfo();
-//     //console.log("addedStockCrypto", addedStockCrypto);
-//     //now getStockCryptoArray should have exisiting saved stock from local stroage. so I will push the addedStorckCrypto - new info into the array.
-//     getStockCryptoArray.push(addedStockCrypto);
-//     //ok, getStockCryptoArray is up-to-date. Time to store it to the local stroage.
-//     //the actual data I am setting is the "getStockCryptoArray" which is up-to-date. However, I am naming it "addedStockCrypto" which
-//     //doesn't relate to the first line of the function. Becasue in the "getLocalInfo" I am getting the info from "addedStockCrypto", I need to have the 
-//     //same name here.
-//     localStorage.setItem("addedStockCrypto", JSON.stringify(getStockCryptoArray));
-// }
 
 function getLocalInfo (){
     // I am assuming I don't need the saveInfo function here because when data gets stored in page2, the name of the data in local storage is 
@@ -51,7 +7,6 @@ function getLocalInfo (){
     return stockCryptoArray;
     
 }
-
 
 function createEl(){
     // the while loop below is to remove any exisiting html stocklist child before obtaining and printing new children to avoid duplication
@@ -67,14 +22,51 @@ function createEl(){
         let tableRowPrice = document.createElement('td');
         let theName = getStockCryptoArray[i].name;
         let thePrice = getStockCryptoArray[i].price;
+        let removeBtnSection = document.createElement('td');
+        let removeBtn = document.createElement('button');
+        removeBtn.className = "btn waves-effect waves-light remove-button";
+
+        removeBtnSection.append(removeBtn);
+        
         tableRowName.textContent = theName;
         tableRowPrice.textContent = thePrice;
+        removeBtn.textContent = "Remove";
         tableRow.append(tableRowName);
         tableRow.append(tableRowPrice);
+        tableRow.append(removeBtnSection);
         stockList.append(tableRow);
         //console.log(tableRowName.textContent);
     }
 
 };
 
+function removeWatchList(event) {
+    // this is to know which removeBtn we are targetting.
+    const current = event.target;
+    // it will go up two levels to get the "tr", then target first child "name"'s textcontent.
+    const item = current.parentElement.parentElement.children[0].textContent;
+    let stockCryptoArray = JSON.parse(localStorage.getItem('addedStockCrypto')) || [];
+    for (let i=0; i<stockCryptoArray.length; i++) {
+        // if the name of the btn is the same as the btn clicked, that object will be elimated from the array.
+        // "1" means only delete the first one. if I put "2" here, then it will go down and delete another one.
+        if (stockCryptoArray[i].name === item) {
+            stockCryptoArray.splice(i, 1);
+        }
+    }
+
+    localStorage.setItem("addedStockCrypto", JSON.stringify(stockCryptoArray));
+
+    location.assign('./watchlist-index.html')
+}
+
 createEl();
+
+const removeBtn = document.querySelectorAll(".remove-button");
+
+console.log(removeBtn);
+//since all the removeBtns have the same class name, this is similar to a for-loop to check
+//which btn was clicked.
+removeBtn.forEach(function(btn) {
+    btn.addEventListener("click", removeWatchList);
+})
+
