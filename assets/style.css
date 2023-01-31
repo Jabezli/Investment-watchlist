@@ -39,7 +39,10 @@ body {
   } */
   
 
-
+.card-container{ 
+  width: 300px;
+  margin: auto;
+ } 
 
 
 .homebutton {
@@ -58,4 +61,8 @@ body {
 }
 #addWatchList{
   margin-top: 10px;
+}
+
+@media screen {
+  
 }
