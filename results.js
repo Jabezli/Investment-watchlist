@@ -122,6 +122,7 @@ function saveInfo (){
     addedStockCrypto.name = document.querySelector(".title").textContent; 
     addedStockCrypto.price = document.querySelector(".price").textContent; 
     //now getStockCryptoArray should have exisiting saved stock from local stroage. so I will push the addedStorckCrypto - new info into the array.
+    let getStockCryptoArray = getLocalInfo();
     getStockCryptoArray.push(addedStockCrypto);
     //ok, getStockCryptoArray is up-to-date. Time to store it to the local stroage.
     //the actual data I am setting is the "getStockCryptoArray" which is up-to-date. However, I am naming it "addedStockCrypto" which
