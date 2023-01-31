@@ -13,12 +13,16 @@
 
 }
 
+
+  
+
+
 body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
     margin: 0 10%;
-    /* background-color: saddlebrown; */
+
   }
 
   main {
@@ -30,15 +34,13 @@ body {
     font-size: medium;
   }
 
-  .title {
+  /* .title {
     font-size: 100px;
-  }
+  } */
   
-.card-container{
-  /* background-color: beige; */
-  padding-top: 50px;
-  padding-left: 300px;
-}
+
+
+
 
 .homebutton {
     margin-top: 10px;
