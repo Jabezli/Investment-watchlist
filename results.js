@@ -60,12 +60,12 @@ function getParams() {
     var resultCard = document.createElement('div');
     resultCard.className = "card-container";
     var titleEL = document.createElement('h3');
-    titleEL.classList.add('title'); //added by Wen.
+    titleEL.classList.add('title'); 
     titleEL.textContent = data['Global Quote']['01. symbol'];
     var date = document.createElement('p')
     date.textContent = 'Trading Day: ' + data['Global Quote']['07. latest trading day']
     var price = document.createElement('p');
-    price.classList.add('price'); //added by Wen.
+    price.classList.add('price');
     price.textContent = 'Price: $' + data['Global Quote']['05. price']
     var volume = document.createElement('p')
     volume.textContent = 'Volume: ' + data['Global Quote']['06. volume']
@@ -81,14 +81,14 @@ function getParams() {
     var resultCard = document.createElement('div');
     resultCard.className = "card-container";
     var titleEL = document.createElement('h3');
-    titleEL.classList.add('title'); //added by Wen.
+    titleEL.classList.add('title'); 
     titleEL.textContent = data.name;
     var symbol = document.createElement('p');
     symbol.textContent = 'Symbol: ' + data.symbol;
     var image = document.createElement('img');
     image.src = data.image.small;
     var price = document.createElement('p');
-    price.classList.add('price'); //added by Wen.
+    price.classList.add('price'); 
     price.textContent = 'Price: $' + data.market_data.current_price.usd;
     var dayHigh = document.createElement('p')
     dayHigh.textContent = '24h High: $' + data.market_data.high_24h.usd;
@@ -141,26 +141,30 @@ function getLocalInfo (){
 
   watchListBtn.addEventListener('click',function(){
     searchStoredLocal ();
-    //saveInfo();
   })
 
-  // var checker = searchStoredLocal();
-
 function searchStoredLocal (){
-    let StockCryptoArray = JSON.parse(localStorage.getItem('addedStockCrypto')) || [];
-    let checker = document.querySelector(".title").textContent;
-    
+  //Get the local storage array. 
+  let StockCryptoArray = JSON.parse(localStorage.getItem('addedStockCrypto')) || [];
+  //target the "title" class.
+  let checker = document.querySelector(".title").textContent;
+   //if there is nothing in the array, saveInfo and return. 
     if (StockCryptoArray.length === 0) {
-      console.log("line 154")
       saveInfo();
       return;
     }; 
+    //boolean to the new variable. starting with false ==> will save info
+    let checkerExists = false;
 
+    // run a loop, if any name in the array is same as checker, then the checkExists boolean becomes true, break the loop. go to next line.
     for(var i = 0; i < StockCryptoArray.length; i++){
-      console.log(StockCryptoArray[i].name, checker, StockCryptoArray[i].name === checker);
-      if (StockCryptoArray[i].name !== checker) {
-        console.log("savinginfo");
-        saveInfo();
+      if (StockCryptoArray[i].name === checker) {
+        checkerExists = true;
+        break;
       }
+    }
+    // if checkerExists = false; call saveinfo()
+    if (!checkerExists) {
+      saveInfo();
     }
   }
