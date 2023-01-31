@@ -30,9 +30,10 @@ body {
     font-size: medium;
   }
 
-.data-block{
+.card-container{
   /* background-color: beige; */
-  text-align: center;
+  padding-top: 50px;
+  padding-left: 300px;
 }
 
 .homebutton {
