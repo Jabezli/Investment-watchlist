@@ -30,9 +30,13 @@ body {
     font-size: medium;
   }
 
-.data-block{
+.data-block {
   /* background-color: beige; */
-  text-align: center;
+ text-align: center;
+}
+
+.title {
+  font-size: 100px;
 }
 
 .homebutton {
