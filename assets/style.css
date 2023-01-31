@@ -18,7 +18,6 @@ body {
     min-height: 100vh;
     flex-direction: column;
     margin: 0 10%;
-    /* background-color: saddlebrown; */
   }
 
   main {
@@ -34,11 +33,10 @@ body {
     font-size: 100px;
   }
   
-.card-container{
-  /* background-color: beige; */
-  padding-top: 50px;
-  padding-left: 300px;
-}
+.card-container{ 
+  width: 300px;
+  margin: auto;
+ } 
 
 .homebutton {
     margin-top: 10px;
@@ -56,4 +54,8 @@ body {
 }
 #addWatchList{
   margin-top: 10px;
+}
+
+@media screen {
+  
 }
