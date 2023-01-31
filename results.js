@@ -58,6 +58,7 @@ function getParams() {
 
   function printStock(data) {
     var resultCard = document.createElement('div');
+    resultCard.className = "card-container";
     var titleEL = document.createElement('h3');
     titleEL.classList.add('title'); //added by Wen.
     titleEL.textContent = data['Global Quote']['01. symbol'];
@@ -78,6 +79,7 @@ function getParams() {
   
   function printCrypto(data) {
     var resultCard = document.createElement('div');
+    resultCard.className = "card-container";
     var titleEL = document.createElement('h3');
     titleEL.classList.add('title'); //added by Wen.
     titleEL.textContent = data.name;
@@ -101,15 +103,15 @@ function getParams() {
   //Code to run new search
   function handleSearchFormSubmit(event) {
     event.preventDefault();
-   
-   var textInput = document.querySelector('#input_text').value;
-   var picklistValue = document.querySelector('.page2picklist').value;
+    resultContentEL.innerHTML = "";
+    var textInput = document.querySelector('#input_text').value;
+    var picklistValue = document.querySelector('.page2picklist').value;
  
-   if (!textInput) {
-     console.error('You need a search input value!');
-     return;
-   }
-   searchApi(textInput, picklistValue);
+    if (!textInput) {
+      console.error('You need a search input value!');
+      return;tItem
+    }
+    searchApi(textInput, picklistValue);
  }
  
  form.addEventListener('submit', handleSearchFormSubmit);
@@ -138,6 +140,27 @@ function getLocalInfo (){
   const watchListBtn = document.querySelector('#addWatchList')
 
   watchListBtn.addEventListener('click',function(){
-    saveInfo();
-    location.assign('./watchlist-index.html')
+    searchStoredLocal ();
+    //saveInfo();
   })
+
+  // var checker = searchStoredLocal();
+
+function searchStoredLocal (){
+    let StockCryptoArray = JSON.parse(localStorage.getItem('addedStockCrypto')) || [];
+    let checker = document.querySelector(".title").textContent;
+    
+    if (StockCryptoArray.length === 0) {
+      console.log("line 154")
+      saveInfo();
+      return;
+    }; 
+
+    for(var i = 0; i < StockCryptoArray.length; i++){
+      console.log(StockCryptoArray[i].name, checker, StockCryptoArray[i].name === checker);
+      if (StockCryptoArray[i].name !== checker) {
+        console.log("savinginfo");
+        saveInfo();
+      }
+    }
+  }

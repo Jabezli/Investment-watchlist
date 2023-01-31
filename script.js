@@ -19,3 +19,4 @@ function handleSearchFormSubmit(event) {
 }
 
 form.addEventListener('submit', handleSearchFormSubmit);
+
