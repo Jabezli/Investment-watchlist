@@ -4,9 +4,13 @@
 
 Web app that pulls latest price stats on all publicly traded US equities and crypto assets.
 
-## Installation
+## Technology
 
-NA
+* HTML
+* CSS
+* JavaScript
+* Materialize
+* JQuery
 
 ## Usage
 
