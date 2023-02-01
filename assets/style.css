@@ -1,5 +1,4 @@
 .picklist {
-    /* border: 5px solid black; */
     width: 300px;
 }
 
@@ -10,11 +9,7 @@
 
 .first-page-outter-div {
     width: 50%;
-
 }
-
-
-  
 
 
 body {
@@ -22,28 +17,21 @@ body {
     min-height: 100vh;
     flex-direction: column;
     margin: 0 10%;
+}
 
-  }
-
-  main {
+main {
     flex: 1 0 auto;
-  }
+}
 
-  footer h3 {
+footer h3 {
     text-align: center;
     font-size: medium;
-  }
-
-  /* .title {
-    font-size: 100px;
-  } */
-  
+}
 
 .card-container{ 
   width: 300px;
   margin: auto;
- } 
-
+} 
 
 .homebutton {
     margin-top: 10px;
@@ -52,17 +40,13 @@ body {
 
 .homebutton2ndPage{
   margin-top: 10px;
-
 }
 
 #Page2LeftDiv{
   display:flex;
   flex-direction: column;
 }
+
 #addWatchList{
   margin-top: 10px;
-}
-
-@media screen {
-  
 }
