@@ -35,7 +35,6 @@ function createEl(){
         tableRow.append(tableRowPrice);
         tableRow.append(removeBtnSection);
         stockList.append(tableRow);
-        //console.log(tableRowName.textContent);
     }
 
 };
